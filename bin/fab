@@ -1,37 +1,17 @@
 #!/usr/bin/env ruby
-#coding:utf-8
 
-require 'fab/version'
-require 'fab'
+#require 'fab/version'
+#require 'fab'
 require 'thor'
 
 module Fab
   #= Denrei CLI
   class CLI < Thor
     default_command :help
-    desc "version","show version"
-    def verison
-      p Fab::VERSION
-    end
     
-    API_TEMPLATE = <<-EOS
-#coding:utf-8
-module Fab
-class Apikey
-APIKEY = #{apikey}
-end
-end
-EOS
-    desc "generation","Generaition apikey.rb, Use fab generatin <APIkey> or fab registration <APIkey> "
-    def registration(apikey=nil)
-      unless apikey
-        p "error  input apikey"
-        exit
-      end
-
-      File.open("apikey.rb" "w") do |file|
-        puts API_TEMPLATE
-      end
+    desc "version","show version"
+    def version
+      p Fab::VERSION
     end
     
     desc "pref","Use fab  -p <Prefectures> or fab --pref <Prefectures>"
