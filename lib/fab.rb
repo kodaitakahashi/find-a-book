@@ -5,6 +5,7 @@ require "apikey"
 require "json"
 require "open-uri"
 require "uri"
+require 'active_support/all'
 
 module Fab
 
@@ -20,15 +21,14 @@ module Fab
     def set_param(pref,city)
       @send_param << "&pref=#{pref}"
       @send_param << "&city=#{city}"
-      @send_param << "&format=json"
+ #     @send_param << "&format=json"
     end
 
     def get_id()
       encode_uri = URI.encode(@send_param)
-      get_json = open(encode_uri).read
-      get_json.gsub!("callback([","")
-      get_json.gsub!("]);","")
-      result = JSON.load(get_json)
+      get_xml = open(encode_uri).read
+      hash = Hash.from_xml(get_xml).to_json
+      result = JSON.load(hash)
       p result
 #      @library_list |= Array.new
       
