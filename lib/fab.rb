@@ -21,7 +21,6 @@ module Fab
     def set_param(pref,city)
       @send_param << "&pref=#{pref}"
       @send_param << "&city=#{city}"
- #     @send_param << "&format=json"
     end
 
     def get_id()
@@ -30,8 +29,6 @@ module Fab
       hash = Hash.from_xml(get_xml).to_json
       result = JSON.load(hash)
       p result
-#      @library_list |= Array.new
-      
     end
   end
 end
