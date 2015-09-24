@@ -8,6 +8,10 @@ module Fab
   #= Denrei CLI
   class CLI < Thor
     default_command :help
+
+    desc "registration" ,"APIKey registration"
+    def registratin
+    end
     
     desc "version","show version"
     def version
