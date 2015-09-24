@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require "fab/version"
+require "fab"
+require "thor"
+
+module Fab
+  #= Denrei CLI
+  class CLI < Thor
+    desc "version","show version"
+    def verison
+      p Fab::VERSION
+    end
+  end
+  
+  desc "registration","Generaition apikey.rb, Use fab -r <APIkey> or fab --registration <APIkey> "
+  def registration
+  end
+  
+  desc "pref","Use fab  -p <Prefectures> or fab --pref <Prefectures>"
+  def pref
+  end
+
+  desc "city" , "fab -c <city> or fab --city <city>"
+  def city
+  end
+  
+end
+
+
