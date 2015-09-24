@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-#require 'fab/version'
-#require 'fab'
+require 'fab/version'
+require 'fab'
 require 'thor'
 
 module Fab
