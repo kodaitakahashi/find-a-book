@@ -12,7 +12,7 @@ module Fab
 
     CREATE_PATH = "./../lib/apikey.rb"
     desc "registration" ,"APIKey registration"
-    def registratin
+    def registration
     end
 
     option :pref,:type => :string ,:required => true, :aliases => "p"
