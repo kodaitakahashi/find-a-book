@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# -*- coding: utf-8-*-
 
 require 'fab/version'
 require 'fab'
@@ -13,13 +14,22 @@ module Fab
     def registratin
     end
 
-    option :pre,:type => :string ,:required => true 
-    option :cit,:type => :string ,:required => true
-    option :isb,:type=> :numeric ,:required => true
+    option :pref,:type => :string ,:required => false , :defalt => nil , :aliases => "p"
+    option :city,:type => :string ,:required => false , :defalt => nil , :aliases => "c"
+    option :isbn,:type=> :numeric ,:required => true  , :aliases => "i"
     desc "find","find book"
     def find()
-      
+      puts "isbn&pref&city" if options[:isbn] and options[:pref].nil? and options[:city].nil?
+      exit
+      puts "isbn&pref" if options[:isbn] and options[:pref]
+      exit
+      puts "isbn&city" if options[:isbn] and options[:city].nil?
+      #      Fab::pref.new.add if options[:isbn] and options[:pref]
+      puts "isbn" if options[:isbn]
+      exit
+      #     Fab::Isbn.new.add if options[:isbn]
     end
+    
     desc "version","show version"
     def version
       p Fab::VERSION
