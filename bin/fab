@@ -24,6 +24,13 @@ module Fab
       find_book.set_param(options[:pref].to_s,options[:city].to_s)
       find_book.get_id()
     end
+
+    option :pref,:type => :string ,:required => true, :aliases => "p"
+    option :city,:type => :string ,:required => true , :aliases => "c"
+    desc "list","list libraly"
+    def list
+      
+    end
     
     desc "version","show version"
     def version
