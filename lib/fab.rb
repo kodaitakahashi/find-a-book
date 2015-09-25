@@ -26,9 +26,21 @@ module Fab
     def get_id()
       encode_uri = URI.encode(@send_param)
       get_xml = open(encode_uri).read
-      hash = Hash.from_xml(get_xml).to_json
-      result = JSON.load(hash)
-      p result
+      convert_json = Hash.from_xml(get_xml).to_json
+      result = JSON.load(convert_json)
+      @libraries = Hash.new { | h , k | h[k] = {} }
+      for i in 0..count_id(result)
+        @libraries[i]["libid"] =  result["Libraries"]["Library"][i.to_i]["libid"]
+        @libraries[i]["formal"] = result["Libraries"]["Library"][i.to_i]["formal"]
+      end
+      p @libraries
+    end
+    
+    private
+    def count_id(target)
+      count = target.to_s.scan(/l[a-z]*d/).size - 1 
+     p count
+      count
     end
   end
 end
