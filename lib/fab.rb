@@ -23,7 +23,7 @@ module Fab
       @send_param << "&city=#{city}"
     end
 
-    def get_id()
+    def get_param()
       encode_uri = URI.encode(@send_param)
       get_xml = open(encode_uri).read
       convert_json = Hash.from_xml(get_xml).to_json
