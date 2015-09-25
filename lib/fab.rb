@@ -33,7 +33,6 @@ module Fab
         @libraries[i]["libid"] =  result["Libraries"]["Library"][i.to_i]["libid"]
         @libraries[i]["formal"] = result["Libraries"]["Library"][i.to_i]["formal"]
       end
-      p @libraries
     end
     
     private
