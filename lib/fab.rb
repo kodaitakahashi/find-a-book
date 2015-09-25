@@ -38,7 +38,6 @@ module Fab
     private
     def count_id(target)
       count = target.to_s.scan(/l[a-z]*d/).size - 1 
-     p count
       count
     end
   end
