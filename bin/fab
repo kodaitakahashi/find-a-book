@@ -22,8 +22,8 @@ module Fab
     def find()
       find_book = Fab::Set.new
       find_book.set_param(options[:pref].to_s,options[:city].to_s)
-      find_book.get_id()
-    end
+      find_book.get_params()
+    End
 
     option :pref,:type => :string ,:required => true, :aliases => "p"
     option :city,:type => :string ,:required => true , :aliases => "c"
