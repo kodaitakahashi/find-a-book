@@ -18,7 +18,7 @@ module Fab
       @library_send_param = "http://api.calil.jp/library?appkey=#{Fab::Apikey::APIKEY}"
     end
     
-    def set_param(pref,city)
+    def library_set_param(pref,city)
       @library_send_param << "&pref=#{pref}"
       @library_send_param << "&city=#{city}"
     end
