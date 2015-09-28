@@ -12,10 +12,12 @@ module Fab
 
     LINE_BREAK_TEMPLATE = "\n---------------------------"
     
-    def echo_book(location , book)
-      puts location
-      situation_appraisal(book["result"]["books"]["book"]["system"]["libkeys"])
-      puts LINE_BREAK_TEMPLATE
+    def echo_book()
+      for i in 0..@id_count
+        puts "場所  #{@libraries[i]["formal"]}"
+        situation_appraisal(@books[i]["situation"])
+        puts LINE_BREAK_TEMPLATE
+      end
     end
 
     POSSIBLE_TEMPLATE = "貸出可能"
@@ -42,6 +44,7 @@ module Fab
 
     SLEEP_TIME = 5
     def book_get_params()
+      @books = Hash.new { | h , k | h[k] = {} }
       count = 0
       @libraries.each_value do | library |
         temp_send_param = @book_send_param+"&systemid=#{library["systemid"]}"
@@ -54,7 +57,7 @@ module Fab
           break if result["result"]["continue"].to_i == 0
           sleep(SLEEP_TIME.to_i)
         end
-        echo_book(@libraries[count]["formal"] , result )
+        @books[count]["situation"] = result["result"]["books"]["book"]["system"]["libkeys"]
         count += 1
       end
     end
@@ -76,7 +79,8 @@ module Fab
       convert_json = Hash.from_xml(get_xml).to_json
       result = JSON.load(convert_json)
       @libraries = Hash.new { | h , k | h[k] = {} }
-      for i in 0..count_id(result)
+      count_id(result)
+      for i in 0..@id_count
         @libraries[i]["systemid"] =  result["Libraries"]["Library"][i]["systemid"]
         @libraries[i]["formal"] = result["Libraries"]["Library"][i]["formal"]
       end
@@ -84,8 +88,7 @@ module Fab
     
     private
     def count_id(target)
-      id_count = target.to_s.scan(/sys[a-z]*d/).size - 1
-      id_count
+      @id_count = target.to_s.scan(/sys[a-z]*d/).size - 1
     end
   end
 end
