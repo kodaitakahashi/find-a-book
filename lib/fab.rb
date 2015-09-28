@@ -11,9 +11,26 @@ module Fab
   class Find
 
     def book_set_param(isbn)
-      @book_send_param = "http://api.calil.jp/check"
+      @book_send_param = "http://api.calil.jp/check?"
       @book_send_param << "appkey=#{Fab::Apikey::APIKEY}"
       @book_send_param << "&isbn=#{isbn}"
+      @book_send_param << "&format=xml"
+    end
+
+    SLEEP_TIME = 5
+    def book_get_params()
+      @libraries.each_value do | library |
+        temp_send_param = @book_send_param+"&systemid=#{library["systemid"]}"
+        encode_uri = URI.encode(temp_send_param)
+        result = nil
+        loop do
+          get_xml = open(encode_uri).read
+          convert_json = Hash.from_xml(get_xml).to_json
+          result = JSON.load(convert_json)
+          break if result["result"]["continue"].to_i == 0
+          sleep(SLEEP_TIME)
+        end
+      end
     end
   end
   
@@ -34,14 +51,14 @@ module Fab
       result = JSON.load(convert_json)
       @libraries = Hash.new { | h , k | h[k] = {} }
       for i in 0..count_id(result)
-        @libraries[i]["libid"] =  result["Libraries"]["Library"][i]["libid"]
+        @libraries[i]["systemid"] =  result["Libraries"]["Library"][i]["systemid"]
         @libraries[i]["formal"] = result["Libraries"]["Library"][i]["formal"]
       end
     end
     
     private
     def count_id(target)
-      id_count = target.to_s.scan(/l[a-z]*d/).size - 1 
+      id_count = target.to_s.scan(/sys[a-z]*d/).size - 1
       id_count
     end
   end
