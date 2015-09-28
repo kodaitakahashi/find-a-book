@@ -1,6 +1,5 @@
 #!/usr/local/env ruby
 #coding:utf-8
-require "fab/version"
 require "apikey"
 require "json"
 require "open-uri"
