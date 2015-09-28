@@ -10,8 +10,13 @@ module Fab
 
   class Find
 
-    def search_book(isbn)
-      
+    def initialize
+      @book_send_param = "http://api.calil.jp/check?"
+    end
+
+    def book_set_param(isbn)
+      @book_send_param << "appkey=#{Fab::Apikey::APIKEY}"
+      @book_send_param << "&isbn=#{isbn}"
     end
   end
   
