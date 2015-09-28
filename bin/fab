@@ -3,6 +3,8 @@
 
 require 'fab/version'
 require 'fab'
+require 'apikey'
+require 'generate'
 require 'thor'
 
 module Fab
@@ -10,9 +12,15 @@ module Fab
   class CLI < Thor
     default_command :help
 
-    CREATE_PATH = "./../lib/apikey.rb"
+    option :apikey , :type => :string , :required => true , :aliases => "a"
+    option :permute , :type => :boolean, :aliases => "p"
     desc "registration" ,"APIKey registration"
     def registration
+      if options[:permute]
+        Fab::Api.new.permute_apifile(options[:apikey].to_s)
+      else
+        Fab::Api.new.create_apifile(options[:apikey].to_s)
+      end
     end
 
     option :pref,:type => :string ,:required => true, :aliases => "p"
