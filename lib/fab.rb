@@ -28,9 +28,9 @@ module Fab
     private
     def situation_appraisal(situation)
       if situation.nil?
-        puts NON_BOOK_TEMPLATE
+        puts "状況  #{NON_BOOK_TEMPLATE}"
       else
-        puts situation["libkey"]
+        puts "状況  #{situation["libkey"]}"
       end
     end
   end
