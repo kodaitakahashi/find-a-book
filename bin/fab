@@ -23,7 +23,6 @@ module Fab
       find_book = Fab::Set.new
       find_book.library_set_param(options[:pref].to_s,options[:city].to_s)
       find_book.get_params()
-      find_book.
     end
 
     option :pref,:type => :string ,:required => true, :aliases => "p"
