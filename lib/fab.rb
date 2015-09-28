@@ -27,7 +27,7 @@ module Fab
       @library_send_param << "&city=#{city}"
     end
 
-    def get_params()
+    def library_get_params()
       encode_uri = URI.encode(@library_send_param)
       get_xml = open(encode_uri).read
       convert_json = Hash.from_xml(get_xml).to_json
