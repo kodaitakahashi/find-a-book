@@ -30,15 +30,15 @@ module Fab
       result = JSON.load(convert_json)
       @libraries = Hash.new { | h , k | h[k] = {} }
       for i in 0..count_id(result)
-        @libraries[i]["libid"] =  result["Libraries"]["Library"][i.to_i]["libid"]
-        @libraries[i]["formal"] = result["Libraries"]["Library"][i.to_i]["formal"]
+        @libraries[i]["libid"] =  result["Libraries"]["Library"][i]["libid"]
+        @libraries[i]["formal"] = result["Libraries"]["Library"][i]["formal"]
       end
     end
     
     private
     def count_id(target)
-      count = target.to_s.scan(/l[a-z]*d/).size - 1 
-      count
+      id_count = target.to_s.scan(/l[a-z]*d/).size - 1 
+      id_count
     end
   end
 end
