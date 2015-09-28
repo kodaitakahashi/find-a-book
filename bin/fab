@@ -24,6 +24,7 @@ module Fab
       find_book.library_set_param(options[:pref].to_s,options[:city].to_s)
       find_book.library_get_params()
       find_book.book_set_param(options[:isbn].to_s)
+      find_book.book_get_params()
     end
 
     option :pref,:type => :string ,:required => true, :aliases => "p"
