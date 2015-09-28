@@ -15,16 +15,16 @@ module Fab
   
   class Set < Find
     def initialize()
-      @send_param = "http://api.calil.jp/library?appkey=#{Fab::Apikey::APIKEY}"
+      @library_send_param = "http://api.calil.jp/library?appkey=#{Fab::Apikey::APIKEY}"
     end
     
     def set_param(pref,city)
-      @send_param << "&pref=#{pref}"
-      @send_param << "&city=#{city}"
+      @library_send_param << "&pref=#{pref}"
+      @library_send_param << "&city=#{city}"
     end
 
     def get_params()
-      encode_uri = URI.encode(@send_param)
+      encode_uri = URI.encode(@library_send_param)
       get_xml = open(encode_uri).read
       convert_json = Hash.from_xml(get_xml).to_json
       result = JSON.load(convert_json)
