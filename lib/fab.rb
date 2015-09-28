@@ -23,9 +23,11 @@ module Fab
     end
 
     private
+    
     POSSIBLE_TEMPLATE = "貸出可能"
     IMPOSSIBLE_TEMPLATE = "貸出不可"
     NON_BOOK_TEMPLATE = "蔵書無し"
+    
     def situation_appraisal(situation)
       if situation.nil?
         puts "状況  #{NON_BOOK_TEMPLATE}"
