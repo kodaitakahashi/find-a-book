@@ -8,7 +8,30 @@ require 'active_support/all'
 
 module Fab
 
-  class Find
+  class Output
+
+    LINE_BREAK_TEMPLATE = "\n---------------------------"
+    
+    def echo_book(location , book)
+      puts location
+      situation_appraisal(book["result"]["books"]["book"]["system"]["libkeys"])
+      puts LINE_BREAK_TEMPLATE
+    end
+
+    POSSIBLE_TEMPLATE = "貸出可能"
+    IMPOSSIBLE_TEMPLATE = "貸出不可"
+    NON_BOOK_TEMPLATE = "蔵書無し"
+    private
+    def situation_appraisal(situation)
+      if situation.nil?
+        puts NON_BOOK_TEMPLATE
+      else
+        puts situation["libkey"]
+      end
+    end
+  end
+  
+  class Find < Output
 
     def book_set_param(isbn)
       @book_send_param = "http://api.calil.jp/check?"
@@ -19,6 +42,7 @@ module Fab
 
     SLEEP_TIME = 5
     def book_get_params()
+      count = 0
       @libraries.each_value do | library |
         temp_send_param = @book_send_param+"&systemid=#{library["systemid"]}"
         encode_uri = URI.encode(temp_send_param)
@@ -28,8 +52,10 @@ module Fab
           convert_json = Hash.from_xml(get_xml).to_json
           result = JSON.load(convert_json)
           break if result["result"]["continue"].to_i == 0
-          sleep(SLEEP_TIME)
+          sleep(SLEEP_TIME.to_i)
         end
+        echo_book(@libraries[count]["formal"] , result )
+        count += 1
       end
     end
   end
