@@ -10,6 +10,9 @@ module Fab
 
   class Find
 
+    def search_book(isbn)
+      
+    end
   end
   
   class Set < Find
