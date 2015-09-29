@@ -67,7 +67,7 @@ module Fab
     end
   end
 
-  class Library < Find
+  class Library < Book
     def initialize()
       @library_send_param = "http://api.calil.jp/library?"
     end
