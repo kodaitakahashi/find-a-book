@@ -8,7 +8,7 @@ require 'generate'
 require 'thor'
 
 module Fab
-  #= Denrei CLI
+  #= Fab CLI
   class CLI < Thor
     default_command :help
 
@@ -49,4 +49,5 @@ module Fab
     end
   end
 end
+
 Fab::CLI.start(ARGV)
