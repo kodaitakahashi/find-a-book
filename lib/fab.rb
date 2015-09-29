@@ -10,11 +10,11 @@ module Fab
 
   class Output
 
-    LINE_TAMPLATE = "---------------------------"
+    LINE_TEMPLATE = "---------------------------"
     LINE_BREAK_TEMPLATE = "---------------------------"
     
     def echo_book()
-      puts  LINE_TAMPLATE
+      puts  LINE_TEMPLATE
       for i in 0..@id_count
         puts "場所  #{@libraries[i]["formal"]}"
         situation_appraisal(@books[i]["situation"])
