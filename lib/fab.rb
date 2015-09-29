@@ -37,7 +37,7 @@ module Fab
     end
   end
   
-  class Find < Output
+  class Book < Output
 
     def book_set_param(isbn)
       @book_send_param = "http://api.calil.jp/check?"
