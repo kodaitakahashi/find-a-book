@@ -66,20 +66,21 @@ module Fab
       end
     end
   end
-  
+
   class Set < Find
     def initialize()
       @library_send_param = "http://api.calil.jp/library?"
     end
 
+    NONE_APIKEY_TEMPLATE = <<-EOS
+APIKeyが設定されていません
+fab registration -apikey [APIKEY] を実行してください
+EOS
     def library_set_param(pref,city)
       begin
         @library_send_param << "appkey=#{Fab::Apikey::APIKEY}"
       rescue
-        puts(<<"EOS") 
-APIKeyが設定されていません
-fab registration -apikey [APIKEY] を実行してください
-EOS
+        puts NONE_APIKEY_TEMPLATE
         exit
       end
         @library_send_param << "&pref=#{pref}"
