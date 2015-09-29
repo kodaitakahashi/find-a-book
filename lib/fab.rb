@@ -73,8 +73,8 @@ module Fab
     end
 
     NONE_APIKEY_TEMPLATE = <<-EOS
-APIKeyが設定されていません
-fab registration -apikey [APIKEY] を実行してください
+not set apikey
+fab registration -apikey,-a [APIKEY]
 EOS
     def library_set_param(pref,city)
       begin
@@ -85,7 +85,6 @@ EOS
       end
         @library_send_param << "&pref=#{pref}"
         @library_send_param << "&city=#{city}"
-        
     end
 
     def library_get_params()
