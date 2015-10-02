@@ -17,7 +17,7 @@ module Fab
     desc "registration" ,"APIKey registration"
     def registration
       if options[:remake]
-        Fab::Api.new.permute_apifile(options[:apikey].to_s)
+        Fab::Api.new.remake_apifile(options[:apikey].to_s)
       else
         Fab::Api.new.create_apifile(options[:apikey].to_s)
       end
