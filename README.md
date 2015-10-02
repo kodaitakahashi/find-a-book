@@ -11,7 +11,7 @@ This command is easy Your looking book.
 ruby
 gem 'fab'
 or
-gem 'fab', github:"hogehoge"
+gem 'fab', github:"https://github.com/kodaitakahashi/fab"
 ```
 
 And then execute:
