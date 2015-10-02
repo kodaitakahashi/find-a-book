@@ -1,4 +1,4 @@
-# Fab
+# find-a-book
 
 Japan only.
 Your looking book.
@@ -9,9 +9,7 @@ This command is easy Your looking book.
 
 ```
 ruby
-gem 'fab'
-or
-gem 'fab', github:"https://github.com/kodaitakahashi/fab"
+gem 'find-a-book'
 ```
 
 And then execute:
@@ -23,6 +21,9 @@ Or install it yourself as:
     $ gem install fab
 
 ## Usage
+add PATH
+    $ln -s /path/to/find-a-book/bin/fab /usr/bin
+
 Get APIKey in Kariru
 [カーリル](https://calil.jp/"calil")
 
