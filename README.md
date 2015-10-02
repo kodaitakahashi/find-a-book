@@ -7,10 +7,11 @@ This command is easy Your looking book.
 ## Installation
 
 
-```ruby
-gem 'fab'```
+```
+ruby
+gem 'fab'
 or
-```gem 'fab', github:"hogehoge"
+gem 'fab', github:"hogehoge"
 ```
 
 And then execute:
@@ -25,18 +26,18 @@ Or install it yourself as:
 Get APIKey in Kariru
 [カーリル](https://calil.jp/"calil")
 
-```$fab registratin { -a , --apikey} [Your APIkey]```
+    $fab registratin { -a , --apikey} [Your APIkey]
 APIkey add to apikey.rb
 [option]
 {-a , --apikey} add apikey.rb
 {-r , --remake} remake apikey.rb
 
-```$fab find {-i , --isbn} {-p , --pref} {-c , --city}```
+    $fab find {-i , --isbn} {-p , --pref} {-c , --city}
 search your  looking book
 [option]
 {-i , --isbn} Your looking book isbn.
 {-p , --pref} Search for prefectures.
 {-c , --city} Serarch for city.
 
-```$fab find delete ```
+    $fab delete 
 delete apikey.rb
