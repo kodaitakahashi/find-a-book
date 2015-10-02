@@ -13,10 +13,10 @@ module Fab
     default_command :help
 
     option :apikey , :type => :string , :required => true , :aliases => "a"
-    option :permute , :type => :boolean, :aliases => "p"
+    option :remake , :type => :boolean, :aliases => "r"
     desc "registration" ,"APIKey registration"
     def registration
-      if options[:permute]
+      if options[:remake]
         Fab::Api.new.permute_apifile(options[:apikey].to_s)
       else
         Fab::Api.new.create_apifile(options[:apikey].to_s)
