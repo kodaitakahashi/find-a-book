@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'fab/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "fab"
+  spec.name          = "find-a-book"
   spec.version       = Fab::VERSION
   spec.authors       = ["kodaitakahashi"]
   spec.email         = ["kodaitakahashi.kt@gmail.com"]
