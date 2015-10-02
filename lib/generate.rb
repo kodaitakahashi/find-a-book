@@ -5,21 +5,30 @@ module Fab
   class Api
 
     def create_apifile(apikey)
-      api_path = File.expand_path('../../lib',__FILE__)
-      api_path << "/apikey.rb"
-      write_file(api_path,apikey)
+      delete()
+      write_file(path(),apikey)
+      true
     end
 
     def permute_apifile(apikey)
-      api_path = File.expand_path('../../lib',__FILE__)
-      api_path << "/apikey.rb"
-      File.open(api_path , "w") do | file |
-        file = nil
-      end
-      write_file(api_path,apikey)
+      delete()
+      write_file(path(),apikey)
+      true
     end
 
+    def delete()
+      path()
+      File.open(path() , "w") do | file |
+        file = nil
+      end
+    end
+    
     private
+    def path()
+      api_path = File.expand_path('../../lib',__FILE__)
+      api_path << "/apikey.rb"
+      api_path
+    end
     def write_file(path,apikey)
       File.open(path,"w") do | file |
         file.puts(<<"EOS")
