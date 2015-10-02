@@ -10,7 +10,7 @@ module Fab
       true
     end
 
-    def permute_apifile(apikey)
+    def remake_apifile(apikey)
       delete()
       write_file(path(),apikey)
       true
