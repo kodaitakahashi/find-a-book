@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["kodaitakahashi"]
   spec.email         = ["kodaitakahashi.kt@gmail.com"]
 
-  spec.summary       = %q{test.}
-  spec.description   = %q{test}
-  spec.homepage      = "https://github.com/kodaitakahashi/lita-notification_weather"
+  spec.summary       = %q{Japan only. Your looking book. This command is easy Your looking book.}
+  spec.description   = %q{This command is easy Your looking book.}
+  spec.homepage      = "https://github.com/kodaitakahashi/fab"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
