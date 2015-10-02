@@ -28,13 +28,13 @@ add PATH
 Get APIKey in Kariru
 [カーリル](https://calil.jp/"calil")
 
-    $fab registratin { -a , --apikey} [Your APIkey]
+    $fab registratin { -a , --apikey}=[Your APIkey]
 APIkey add to apikey.rb
 [option]
 {-a , --apikey} add apikey.rb
 {-r , --remake} remake apikey.rb
 
-    $fab find {-i , --isbn} {-p , --pref} {-c , --city}
+    $fab find {-i , --isbn}=[ISBN] {-p , --pref}=[pref] {-c , --city}=[city]
 search your  looking book
 [option]
 {-i , --isbn} Your looking book isbn.
