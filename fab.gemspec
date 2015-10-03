@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Fab::VERSION
   spec.authors       = ["kodaitakahashi"]
   spec.email         = ["kodaitakahashi.kt@gmail.com"]
+  spec.licenses      = ['MIT']
 
   spec.summary       = %q{Japan only. Your looking book. This command is easy Your looking book.}
   spec.description   = %q{This command is easy Your looking book.}
